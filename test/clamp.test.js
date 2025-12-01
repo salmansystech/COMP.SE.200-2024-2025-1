@@ -29,4 +29,25 @@ describe('clamp()', () => {
   test('NaN number returns NaN', () => {
     expect(clamp(NaN, 0, 5)).toBeNaN();
   });
+
+  test('upper < lower returns the upper bound result', () => {
+    expect(clamp(3, 10, 5)).toBe(5);
+  });
+
+  test('returns lower when number < upper', () => {
+    expect(clamp(1, 0, 5)).toBe(0);
+  });
+
+  test('string bounds with reversed order return upper then lower processed result', () => {
+    expect(clamp(3, "10", "5")).toBe(5);
+  });
+
+  test('upper < lower with negative numbers returns number after comparisons', () => {
+    expect(clamp(-3, -1, -5)).toBe(-3);
+  });
+
+  test('number equal to upper returns lower if it is greater', () => {
+    expect(clamp(5, -5, 5)).toBe(-5);
+  });
+
 });
