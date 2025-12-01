@@ -16,5 +16,20 @@
     "babel-jest": "^30.2.0",
     "coveralls": "^3.1.1",
     "jest": "^30.2.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/add.js",
+      "src/camelCase.js",
+      "src/capitalize.js",
+      "src/ceil.js",
+      "src/clamp.js",
+      "src/divide.js",
+      "src/filter.js",
+      "src/isEmpty.js",
+      "src/map.js",
+      "src/toNumber.js"
+    ]
   }
 }
