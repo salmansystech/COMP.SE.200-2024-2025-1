@@ -33,4 +33,21 @@ describe('camelCase()', () => {
   test('returns space for empty string', () => {
     expect(camelCase('')).toBe(' ');
   });
+  
+  test('handles strings with multiple consecutive separators', () => {
+    expect(camelCase('_foo---bar   baz')).toBe(' fooBarBaz');
+  });
+
+  test('handles strings containing numbers inside words', () => {
+    expect(camelCase('foo 123 bar')).toBe(' foo123Bar');
+  });
+
+  test('handles strings with leading and trailing spaces', () => {
+    expect(camelCase('   foo bar   ')).toBe(' fooBar');
+  });
+
+  test('handles single-word input by lowercasing first letter', () => {
+    expect(camelCase('HELLO')).toBe(' hello');
+  });
+
 });
