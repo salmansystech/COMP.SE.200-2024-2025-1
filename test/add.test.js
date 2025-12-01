@@ -18,7 +18,7 @@ describe('add()', () => {
     expect(add(7)).toBe(7);
   });
 
-  added 5 more
+  // added 5 more test cases:
 
   test('adds zero to a number', () => {
   expect(add(0, 9)).toBe(9);
