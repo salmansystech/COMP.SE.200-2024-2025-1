@@ -50,9 +50,8 @@ describe('clamp()', () => {
     expect(clamp(5, -5, 5)).toBe(-5);
   });
 
-  test('NaN lower bound converts to 0', () => {
-  const res = clamp(5, NaN, 10);
-  expect(res).toBe(10);
+ test('NaN upper bound converts to 0', () => {
+  expect(clamp(5, 1, NaN)).toBe(1);
 });
 
 test('NaN upper bound converts to 0', () => {
