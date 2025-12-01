@@ -49,13 +49,20 @@ describe('clamp()', () => {
   test('number equal to upper returns lower if it is greater', () => {
     expect(clamp(5, -5, 5)).toBe(-5);
   });
-  
+
   test('NaN lower bound converts to 0', () => {
-  expect(clamp(5, NaN, 10)).toBe(5);
+  const res = clamp(5, NaN, 10);
+  expect(res).toBe(10);
 });
 
 test('NaN upper bound converts to 0', () => {
-  expect(clamp(5, 0, NaN)).toBe(0);
+  const res = clamp(5, 0, NaN);
+  expect(res).toBe(0);
+});
+
+test('Both NaN converts to 0', () => {
+  const res = clamp(50, NaN, NaN);
+  expect(res).toBe(0);
 });
 
 });
