@@ -45,4 +45,17 @@ describe('toNumber()', () => {
     expect(toNumber(-Infinity)).toBe(-Infinity);
     expect(toNumber(NaN)).toBeNaN();
   });
+
+  // 8. Object whose valueOf returns an object
+test('object with valueOf returning object should return NaN', () => {
+  const obj = { valueOf: () => ({}) };
+  expect(toNumber(obj)).toBeNaN();
+});
+
+//  9. Bad signed hex strings
+test('returns NaN for bad signed hex strings', () => {
+  expect(toNumber('-0x1A')).toBeNaN();
+  expect(toNumber('+0x1A')).toBeNaN();
+});
+
 });
