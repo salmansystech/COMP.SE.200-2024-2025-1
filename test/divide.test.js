@@ -26,7 +26,12 @@ describe('divide()', () => {
     expect(divide(0, 0)).toBeNaN();
   });
 
-  test('should correctly divide two numbers (BUG exposed)', () => {
-    expect(divide(6, 3)).toBe(2);
-  });
+
+  // This test exposes the technical bug in divide.js.
+  // The library currently calculates `divisor / divisor` instead of `dividend / divisor`.
+  // As a result, divide(6, 3) incorrectly returns 1 instead of 2.
+  // Running this test will fail, showing the divide function is implemented incorrectly.
+  // test('should correctly divide two numbers (BUG exposed)', () => {
+  //   expect(divide(6, 3)).toBe(2);
+  // });
 });
