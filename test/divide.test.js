@@ -25,4 +25,8 @@ describe('divide()', () => {
   test('dividing 0 by 0 returns NaN', () => {
     expect(divide(0, 0)).toBeNaN();
   });
+
+  test('should correctly divide two numbers (BUG exposed)', () => {
+    expect(divide(6, 3)).toBe(2);
+  });
 });

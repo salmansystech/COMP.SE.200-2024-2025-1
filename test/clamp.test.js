@@ -18,10 +18,6 @@ describe('clamp()', () => {
     expect(clamp(-5, -5, 5)).toBe(-5);
   });
 
-   test('number equal to lower bound returns lower', () => {
-    expect(clamp(-5, -5, 5)).toBe(-5);
-  });
-
   test('string inputs are converted to numbers', () => {
     expect(clamp("4", "1", "5")).toBe(1);
   });
@@ -62,6 +58,16 @@ test('NaN upper bound converts to 0', () => {
 test('Both NaN converts to 0', () => {
   const res = clamp(50, NaN, NaN);
   expect(res).toBe(0);
+});
+
+// BUG: clamp returns incorrect value for a number inside the bounds
+// This test checks the normal behavior of clamp when the number is within the lower and upper bounds.
+// Expected: the number itself (2) should be returned because it's already inside [-5, 5].
+// Actual: the current clamp implementation incorrectly returns -5 due to wrong comparison logic in the library.
+// The library first compares with `upper`, then `lower`, and overwrites the number incorrectly even when it's within bounds.
+test('clamp returns incorrect value for number inside bounds (BUG)', () => {
+  const result = clamp(2, -5, 5);
+  expect(result).toBe(2);
 });
 
 });
